@@ -6,5 +6,6 @@ user_input = input(prompt)
 count = 0
 for item in user_input:
     count = count + 1
-
+    
+print(len(user_input))
 print(f'The count of the string provided: {count}')
