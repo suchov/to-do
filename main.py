@@ -10,8 +10,8 @@ while True:
             todo = input("Enter a to-do: ")
             todos.append(todo)
         case 'show' | 'display':
-            for item in todos:
-                print(item)
+            for index, item in enumerate(todos):
+                print(f"{index} - {item}")
         case 'exit':
             break
         case 'edit':
@@ -21,4 +21,3 @@ while True:
         case random_string:
             print("Hey, you entered an unknown command")
 print("Bye")
-
