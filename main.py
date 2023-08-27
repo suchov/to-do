@@ -19,13 +19,8 @@ while True:
             file = open('todos.txt', 'r')
             todos = file.readlines()
             file.close()
-            # with the for loop
-            # new_todos = []
-            # for item in todos:
-            #    new_todos.append(item.strip('\n'))
-            # list comprehension
-            new_todos = [item.strip('\n') for item in todos]
-            for index, item in enumerate(new_todos):
+            for index, item in enumerate(todos):
+                item = item.strip('\n')
                 print(f"{index + 1} - {item}")
             print(f"Length is, {len(todos)}")
         case 'exit':
