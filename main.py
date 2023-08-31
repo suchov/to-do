@@ -16,32 +16,39 @@ while True:
                 file.writelines(todos)
 
         case 'show' | 'display':
-            file = open('todos.txt', 'r')
-            todos = file.readlines()
-            file.close()
+            with open('todos.txt', 'r') as fl:
+                todos = fl.readlines()
+
             for index, item in enumerate(todos):
                 item = item.strip('\n')
                 print(f"{index + 1} - {item}")
             print(f"Length is, {len(todos)}")
+
         case 'exit':
             break
         case 'complete':
             number = int(input("Number of the to-do to complete: "))
-            file = open('todos.txt', 'r')
-            todos = file.readlines()
+
+            with open('todos.txt', 'r') as fl:
+                todos = fl.readlines()
+
             todos.pop(number - 1)
-            file = open('todos.txt', 'w')
-            file.writelines(todos)
-            file.close()
+
+            with open('todos.txt', 'w') as fl:
+                fl.writelines(todos)
+
             print(f"The item with index {number} was deleted")
         case 'edit':
             number = input("Number of the to-do to edit: ")
-            file = open('todos.txt', 'r')
-            todos = file.readlines()
+
+            with open('todos.txt', 'r') as fl:
+                todos = fl.readlines()
+
             todos[int(number) - 1] = input("Enter a to-do replacement: ")
-            file = open('todos.txt', 'w')
-            file.writelines(todos)
-            file.close()
+
+            with open('todos.txt', 'w') as fl:
+                fl.writelines(todos)
+
             print("Your to-do updated!")
         case random_string:
             print("Hey, you entered an unknown command")
