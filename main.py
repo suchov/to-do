@@ -7,7 +7,7 @@ while True:
         case 'add':
             todo = input("Enter a to-do: ") + "\n"
 
-            with open('todos.txt', 'r') as file:
+            with open('todos.txt') as file:
                 todos = file.readlines()
 
             todos.append(todo)
@@ -16,7 +16,7 @@ while True:
                 file.writelines(todos)
 
         case 'show' | 'display':
-            with open('todos.txt', 'r') as fl:
+            with open('todos.txt') as fl:
                 todos = fl.readlines()
 
             for index, item in enumerate(todos):
@@ -29,7 +29,7 @@ while True:
         case 'complete':
             number = int(input("Number of the to-do to complete: "))
 
-            with open('todos.txt', 'r') as fl:
+            with open('todos.txt') as fl:
                 todos = fl.readlines()
 
             todos.pop(number - 1)
@@ -41,7 +41,7 @@ while True:
         case 'edit':
             number = input("Number of the to-do to edit: ")
 
-            with open('todos.txt', 'r') as fl:
+            with open('todos.txt') as fl:
                 todos = fl.readlines()
 
             todos[int(number) - 1] = input("Enter a to-do replacement: ")
