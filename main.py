@@ -3,13 +3,13 @@ while True:
     user_action = input(u"Type add, show, complete, edit or exit: ")
     user_action = user_action.strip()
 
-    if 'add' in user_action:
+    if 'add' in user_action or 'new' in user_action:
         todo = user_action[4:]
 
         with open('todos.txt') as fl:
             todos = fl.readlines()
 
-            todos.append(todo)
+            todos.append(todo + '\n')
 
         with open('todos.txt', 'w') as fl:
             fl.writelines(todos)
@@ -24,7 +24,7 @@ while True:
             print(f"{index + 1} - {item}")
         print(f"Length is, {len(todos)}")
 
-    elif 'complete' in user_action:
+    elif 'complete' in user_action or 'delete' in user_action:
         number = int(input("Number of the to-do to complete: "))
 
         with open('todos.txt') as fl:
