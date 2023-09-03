@@ -6,13 +6,14 @@ while True:
     if 'add' in user_action:
         todo = user_action[4:]
 
-        with open('todos.txt') as file:
-            todos = file.readlines()
+        with open('todos.txt') as fl:
+            todos = fl.readlines()
 
-        todos.extend(todo)
+            todos.append(todo)
 
-        with open('todos.txt', 'w') as file:
-            file.writelines(todos)
+        with open('todos.txt', 'w') as fl:
+            fl.writelines(todos)
+            print(todos)
 
     elif 'show' in user_action:
         with open('todos.txt') as fl:
@@ -22,7 +23,6 @@ while True:
             item = item.strip('\n')
             print(f"{index + 1} - {item}")
         print(f"Length is, {len(todos)}")
-        print(todos)
 
     elif 'complete' in user_action:
         number = int(input("Number of the to-do to complete: "))
@@ -37,7 +37,7 @@ while True:
 
         print(f"The item with index {number} was deleted")
     elif 'edit' in user_action:
-        number = input("Number of the to-do to edit: ")
+        number = int(user_action[5:])
 
         with open('todos.txt') as fl:
             todos = fl.readlines()
