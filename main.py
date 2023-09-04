@@ -3,7 +3,7 @@ while True:
     user_action = input(u"Type add, show, complete, edit or exit: ")
     user_action = user_action.strip()
 
-    if 'add' in user_action or 'new' in user_action:
+    if user_action.startswith('add'):
         todo = user_action[4:]
 
         with open('todos.txt') as fl:
@@ -15,7 +15,7 @@ while True:
             fl.writelines(todos)
             print(todos)
 
-    elif 'show' in user_action:
+    elif user_action.startswith('show'):
         with open('todos.txt') as fl:
             todos = fl.readlines()
 
@@ -24,7 +24,7 @@ while True:
             print(f"{index + 1} - {item}")
         print(f"Length is, {len(todos)}")
 
-    elif 'complete' in user_action or 'delete' in user_action:
+    elif user_action.startswith('complete'):
         number = int(input("Number of the to-do to complete: "))
 
         with open('todos.txt') as fl:
@@ -36,7 +36,7 @@ while True:
             fl.writelines(todos)
 
         print(f"The item with index {number} was deleted")
-    elif 'edit' in user_action:
+    elif user_action.startswith('edit'):
         number = int(user_action[5:])
 
         with open('todos.txt') as fl:
@@ -48,7 +48,7 @@ while True:
             fl.writelines(todos)
 
         print("Your to-do updated!")
-    elif 'exit' in user_action:
+    elif user_action.startswith('exit'):
         break
     else:
         print("Command is not valid, pls type valid command")
