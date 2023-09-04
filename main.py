@@ -53,8 +53,8 @@ while True:
                 fl.writelines(todos)
 
             print("Your to-do updated!")
-        except ValueError:
-            print("Your command is not valid")
+        except IndexError:
+            print("You are out of index range.")
             continue
     elif user_action.startswith('exit'):
         break
