@@ -25,29 +25,37 @@ while True:
         print(f"Length is, {len(todos)}")
 
     elif user_action.startswith('complete'):
-        number = int(input("Number of the to-do to complete: "))
+        try:
+            number = int(input("Number of the to-do to complete: "))
 
-        with open('todos.txt') as fl:
-            todos = fl.readlines()
+            with open('todos.txt') as fl:
+                todos = fl.readlines()
 
-        todos.pop(number - 1)
+            todos.pop(number - 1)
 
-        with open('todos.txt', 'w') as fl:
-            fl.writelines(todos)
+            with open('todos.txt', 'w') as fl:
+                fl.writelines(todos)
 
-        print(f"The item with index {number} was deleted")
+            print(f"The item with index {number} was deleted")
+        except ValueError:
+            print("Your command is not valid")
+            continue
     elif user_action.startswith('edit'):
-        number = int(user_action[5:])
+        try:
+            number = int(user_action[5:])
 
-        with open('todos.txt') as fl:
-            todos = fl.readlines()
+            with open('todos.txt') as fl:
+                todos = fl.readlines()
 
-        todos[int(number) - 1] = input("Enter a to-do replacement: ")
+            todos[int(number) - 1] = input("Enter a to-do replacement: ")
 
-        with open('todos.txt', 'w') as fl:
-            fl.writelines(todos)
+            with open('todos.txt', 'w') as fl:
+                fl.writelines(todos)
 
-        print("Your to-do updated!")
+            print("Your to-do updated!")
+        except ValueError:
+            print("Your command is not valid")
+            continue
     elif user_action.startswith('exit'):
         break
     else:
