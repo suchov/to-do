@@ -1,6 +1,6 @@
 # The main file we'll work with
 while True:
-    user_action = input(u"Type add, show, complete, edit or exit: ")
+    user_action = input("Type add, show, complete, edit or exit: ")
     user_action = user_action.strip()
 
     if user_action.startswith('add'):
