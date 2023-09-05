@@ -26,7 +26,7 @@ while True:
 
     elif user_action.startswith('complete'):
         try:
-            number = int(input("Number of the to-do to complete: "))
+            number = int(user_action[9:])
 
             with open('todos.txt') as fl:
                 todos = fl.readlines()
@@ -38,7 +38,7 @@ while True:
 
             print(f"The item with index {number} was deleted")
         except ValueError:
-            print("Your command is not valid")
+            print("There is no item with this number")
             continue
     elif user_action.startswith('edit'):
         try:
@@ -54,7 +54,7 @@ while True:
 
             print("Your to-do updated!")
         except IndexError:
-            print("You are out of index range.")
+            print("There is no item with this number.")
             continue
     elif user_action.startswith('exit'):
         break
