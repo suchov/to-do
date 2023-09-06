@@ -11,12 +11,13 @@ def write_todos(filepath, todos_arg):
 
 
 while True:
-    user_action = input("Type add, show, complete, edit or exit: ")
-    user_action = user_action.strip()
+    user_action = input("Type add, show, complete, edit or exit: ").strip()
 
     if user_action.startswith('add'):
         todo = user_action[4:]
+
         todos = get_todos('todos.txt')
+
         todos.append(todo + '\n')
 
         write_todos('todos.txt', todos)
@@ -28,6 +29,7 @@ while True:
         for index, item in enumerate(todos):
             item = item.strip('\n')
             print(f"{index + 1} - {item}")
+
         print(f"Length is, {len(todos)}")
 
     elif user_action.startswith('complete'):
@@ -55,11 +57,15 @@ while True:
             write_todos('todos.txt', todos)
 
             print("Your to-do updated!")
+
         except IndexError:
+
             print("There is no item with this number.")
             continue
+
     elif user_action.startswith('exit'):
         break
     else:
         print("Command is not valid, pls type valid command")
+
 print("Bye")
