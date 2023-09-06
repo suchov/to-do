@@ -1,23 +1,26 @@
 # The main file we'll work with
+def get_todos(filepath):
+    with open(filepath) as file:
+        todos_funtion = file.readlines()
+    return todos_funtion
+
+
 while True:
     user_action = input("Type add, show, complete, edit or exit: ")
     user_action = user_action.strip()
 
     if user_action.startswith('add'):
         todo = user_action[4:]
-
-        with open('todos.txt') as fl:
-            todos = fl.readlines()
-
-            todos.append(todo + '\n')
+        todos = get_todos('todos.txt')
+        todos.append(todo + '\n')
 
         with open('todos.txt', 'w') as fl:
             fl.writelines(todos)
             print(todos)
 
     elif user_action.startswith('show'):
-        with open('todos.txt') as fl:
-            todos = fl.readlines()
+
+        todos = get_todos('todos.txt')
 
         for index, item in enumerate(todos):
             item = item.strip('\n')
@@ -28,8 +31,7 @@ while True:
         try:
             number = int(user_action[9:])
 
-            with open('todos.txt') as fl:
-                todos = fl.readlines()
+            todos = get_todos('todos.txt')
 
             todos.pop(number - 1)
 
@@ -44,8 +46,7 @@ while True:
         try:
             number = int(user_action[5:])
 
-            with open('todos.txt') as fl:
-                todos = fl.readlines()
+            todos = get_todos('todos.txt')
 
             todos[int(number) - 1] = input("Enter a to-do replacement: ")
 
