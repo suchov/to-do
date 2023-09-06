@@ -5,6 +5,11 @@ def get_todos(filepath):
     return todos_funtion
 
 
+def write_todos(filepath, todos_arg):
+    with open(filepath, 'w') as file:
+        file.writelines(todos_arg)
+
+
 while True:
     user_action = input("Type add, show, complete, edit or exit: ")
     user_action = user_action.strip()
@@ -14,9 +19,7 @@ while True:
         todos = get_todos('todos.txt')
         todos.append(todo + '\n')
 
-        with open('todos.txt', 'w') as fl:
-            fl.writelines(todos)
-            print(todos)
+        write_todos('todos.txt', todos)
 
     elif user_action.startswith('show'):
 
@@ -35,8 +38,7 @@ while True:
 
             todos.pop(number - 1)
 
-            with open('todos.txt', 'w') as fl:
-                fl.writelines(todos)
+            write_todos('todos.txt', todos)
 
             print(f"The item with index {number} was deleted")
         except ValueError:
@@ -50,8 +52,7 @@ while True:
 
             todos[int(number) - 1] = input("Enter a to-do replacement: ")
 
-            with open('todos.txt', 'w') as fl:
-                fl.writelines(todos)
+            write_todos('todos.txt', todos)
 
             print("Your to-do updated!")
         except IndexError:
