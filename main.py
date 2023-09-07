@@ -1,16 +1,7 @@
 # The main file we'll work with
-def get_todos(filepath='todos.txt'):
-    """The function that extract todos from the  file todos.txt is a default"""
-    with open(filepath) as file:
-        todos_funtion = file.readlines()
-    return todos_funtion
+# from functions import get_todos, write_todos
 
-
-def write_todos(todos_arg, filepath='todos.txt'):
-    """The function that writes todos to txt file todos.txt is a default"""
-    with open(filepath, 'w') as file:
-        file.writelines(todos_arg)
-
+import functions
 
 while True:
     user_action = input("Type add, show, complete, edit or exit: ").strip()
@@ -18,15 +9,15 @@ while True:
     if user_action.startswith('add'):
         todo = user_action[4:]
 
-        todos = get_todos()
+        todos = functions.get_todos()
 
         todos.append(todo + '\n')
 
-        write_todos(todos)
+        functions.write_todos(todos)
 
     elif user_action.startswith('show'):
 
-        todos = get_todos()
+        todos = functions.get_todos()
 
         for index, item in enumerate(todos):
             item = item.strip('\n')
@@ -38,11 +29,11 @@ while True:
         try:
             number = int(user_action[9:])
 
-            todos = get_todos()
+            todos = functions.get_todos()
 
             todos.pop(number - 1)
 
-            write_todos(todos)
+            functions.write_todos(todos)
 
             print(f"The item with index {number} was deleted")
         except ValueError:
@@ -52,11 +43,11 @@ while True:
         try:
             number = int(user_action[5:])
 
-            todos = get_todos()
+            todos = functions.get_todos()
 
             todos[int(number) - 1] = input("Enter a to-do replacement: ")
 
-            write_todos(todos)
+            functions.write_todos(todos)
 
             print("Your to-do updated!")
 
