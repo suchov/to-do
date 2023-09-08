@@ -1,5 +1,8 @@
 # The read and write functions for the todos app
-def get_todos(filepath='todos.txt'):
+FILEPATH = "todos.txt"
+
+
+def get_todos(filepath=FILEPATH):
     """The function that extract todos from the  file todos.txt is a default"""
     with open(filepath) as file:
         todos_funtion = file.readlines()
