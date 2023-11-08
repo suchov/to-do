@@ -1,3 +1,5 @@
+# pip3 install streamlit
+# streamlit run web.py
 import streamlit as st
 import functions
 
